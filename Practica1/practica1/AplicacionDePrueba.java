@@ -28,7 +28,7 @@ public class AplicacionDePrueba {
          arrAlumnos[1].setEmail(new String("feli_p_p@homail.com"));
          
          if (args.length  == 0){
-        	 System.out.println("El programa se ejecutó sin parametros");
+        	 System.out.println("El programa se ejecutï¿½ sin parametros");
         	 }
          else if (args.length == 1) {
         	 System.out.print("Datos del alumno en la posicion: ");
