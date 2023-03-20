@@ -2,7 +2,7 @@ package practica1;
 
 public class Alumno {
 
-	String legajo;
+	private String legajo;
 	String nombre;
 	String apellido;
 	int dni;
