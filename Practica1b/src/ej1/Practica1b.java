@@ -46,7 +46,6 @@ public class Practica1b {
                 //System.out.println(inf);
                 ejercicioC((inf+1), sup);
                 System.out.println(inf);
-                System.out.println("PROBANDO MERGE");
             }  
         }
     
