@@ -21,8 +21,8 @@ public class Practica1b {
         System.out.println("Inggrese el numero superior");
         int sup = s.nextInt();
         
-        ejercicioA(inf, sup);
-        ejercicioB(inf, sup);
+        //ejercicioA(inf, sup);
+        //ejercicioB(inf, sup);
         ejercicioC(inf, sup);
 
         
@@ -43,8 +43,9 @@ public class Practica1b {
         
         public static void ejercicioC(int inf, int sup){
             if (inf <= sup) {
-                System.out.println(inf);
+                //System.out.println(inf);
                 ejercicioC((inf+1), sup);
+                System.out.println(inf);
             }  
         }
     

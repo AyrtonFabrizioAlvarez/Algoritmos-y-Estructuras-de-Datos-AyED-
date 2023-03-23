@@ -21,6 +21,8 @@ public class ej5 {
 		System.out.println("minimo " + (int)vectorMm[0]);
 		System.out.println("promedio " + vectorMm[2]);
 	}
+        
+        
 	public static double[] maxMin(int[] vector) {
 		int min = 999;
 		int max = -1;
