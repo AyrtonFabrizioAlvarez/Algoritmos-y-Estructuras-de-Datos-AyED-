@@ -3,32 +3,34 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ej12;
+package ej13;
 import tp02.ejercicio1.ListaDeEnteros;
-import tp02.ejercicio1.ListaDeEnterosConArreglos;
+import tp02.ejercicio1.ListaDeEnterosEnlazada;
+import tp02.ejercicio1.NodoEntero;
 /**
  *
  * @author Cocalibur
  */
-public class ej12 {
+public class ej13 {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ListaDeEnterosConArreglos L = new ListaDeEnterosConArreglos();
+        ListaDeEnterosEnlazada L = new ListaDeEnterosEnlazada();
         
         L.agregarFinal(1);
-        L.agregarFinal(2);
-        L.agregarFinal(3);
-        L.agregarFinal(32);
-        L.agregarFinal(123);
-        L.agregarFinal(64);
-        L.agregarFinal(140);
+        L.agregarFinal(12);
+        L.agregarFinal(31);
+        L.agregarFinal(421);
+        L.agregarFinal(125);
+        L.agregarFinal(71);
+        L.agregarFinal(4);
         
-        //L.comenzar();
+        L.comenzar();
         while (!L.fin()) {
-            System.out.println(L.proximo());            
+            Integer x = L.proximo();
+            System.out.println(x);
         }
     }
     
