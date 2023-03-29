@@ -28,14 +28,12 @@ public class ej16 {
             L = new ListaDeEnterosEnlazada();
         }
         else{
-            int x;
             if (n % 2 == 0){
-                x = n/2;
+                L = calcularSucesion(n/2);
             }
             else{
-                x = 3*n+1;
+                L = calcularSucesion(3*n+1);
             }
-            L = calcularSucesion(x);
             
         }
         L.agregarInicio(n);
