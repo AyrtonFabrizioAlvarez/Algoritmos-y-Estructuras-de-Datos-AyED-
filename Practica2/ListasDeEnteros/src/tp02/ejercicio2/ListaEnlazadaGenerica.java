@@ -234,18 +234,7 @@ public class ListaEnlazadaGenerica<T> extends ListaGenerica<T> {
         public boolean agregar(T[] vector){
             for (int i = 0; i < vector.length; i++) {
                 if (vector[i] != null){
-                    NodoGenerico<T> nuevo = new NodoGenerico();
-                    nuevo.setDato(vector[i]);
-                    if (this.inicio == null) {
-                        this.inicio = nuevo;
-                        this.actual = nuevo;
-                        this.fin = nuevo;
-                    }
-                    else{
-                        this.fin.setSiguiente(nuevo);
-                        this.fin = nuevo;
-                    }
-                this.tamanio++;
+                    this.agregarFinal(vector[i]);
                 }
             }
             return true;
