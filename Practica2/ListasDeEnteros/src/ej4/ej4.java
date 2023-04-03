@@ -20,7 +20,7 @@ public class ej4 {
         //System.out.println("Ingrese un string para saber si es balanceado");
         //String wordInput = s.next();
         
-        String word = "{()[()]}";
+        String word = "[]{})";
         if (esBalanceado(word)){
             System.out.println("El string " + word + " es balanceado");
         }
@@ -36,27 +36,18 @@ public class ej4 {
         int i = 0;
         while ((i < word.length()) && (!balanceado)) {
             char opuesto = obtenerOpuesto(word.charAt(i));
-            
-            if (word == ""){
-                balanceado = true;
-            }
-            else if (esApertura(word.charAt(i))){
+            if (esApertura(word.charAt(i))){
                 P.apilar(word.charAt(i));
             }
             else if ( (P.tope() != null) && (P.tope() == opuesto) ){
                 P.desapilar();
             }
             else{
-                P.apilar(word.charAt(i));
+                return false;
             }
             i++;
         }
-        if (P.esVacia()) {
-            return true;
-        }
-        else{
-            return false;
-        }
+        return true;
     }
     
     public static boolean esApertura(char c){
