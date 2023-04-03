@@ -16,9 +16,11 @@ public class ej4 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Scanner s = new Scanner(System.in);
-        System.out.println("Ingrese una el string para saber si es balanceado");
-        String word = s.next();
+        //Scanner s = new Scanner(System.in);
+        //System.out.println("Ingrese un string para saber si es balanceado");
+        //String wordInput = s.next();
+        
+        String word = "{()[()]}";
         if (esBalanceado(word)){
             System.out.println("El string " + word + " es balanceado");
         }
@@ -29,27 +31,26 @@ public class ej4 {
     
     public static boolean esBalanceado(String word){
         
-        PilaGenerica P = new PilaGenerica();
-        boolean balanceado = true;
+        PilaGenerica<Character> P = new PilaGenerica();
+        boolean balanceado = false;
         int i = 0;
-        while ((i < word.length()) && (balanceado)) {
+        while ((i < word.length()) && (!balanceado)) {
             char opuesto = obtenerOpuesto(word.charAt(i));
-
-            if (esApertura(word.charAt(i))){
+            
+            if (word == ""){
+                balanceado = true;
+            }
+            else if (esApertura(word.charAt(i))){
                 P.apilar(word.charAt(i));
             }
-            else if (word.charAt(i-1) == opuesto){
+            else if ( (P.tope() != null) && (P.tope() == opuesto) ){
                 P.desapilar();
             }
-            else {
-                balanceado = false;
-            }
-            if (word.charAt(1) == opuesto){
-                P.desapilar();
+            else{
+                P.apilar(word.charAt(i));
             }
             i++;
         }
-
         if (P.esVacia()) {
             return true;
         }
