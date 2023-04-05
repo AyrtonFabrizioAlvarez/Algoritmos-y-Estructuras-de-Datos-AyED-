@@ -79,20 +79,49 @@ public class ArbolBinario<T> {
 		return this.hijoDerecho!=null;
 	}
 
-	public int contarHojas() {
-		return 0;
-	}
-	
+    public int contarHojas() {
+        if (this.esVacio()){
+            return 0;
+        }
+        else{
+            if (this.esHoja()){
+                return 1;
+            }
+            else{
+            int aux = 0;
+            if (this.tieneHijoIzquierdo()) {
+                aux += this.getHijoIzquierdo().contarHojas();
+            }
+            if (this.tieneHijoDerecho()) {
+                aux += this.getHijoDerecho().contarHojas();
+            } 
+            return aux;
+        }
+        }
+    }
 
     public ArbolBinario<T> espejo() {
-		
-		return null;
-	}
+        if(this.esVacio()){
+            return null;
+        }
+        else{
+            ArbolBinario<T> arbolAux = new ArbolBinario(this.getDato());
+            if (!this.esHoja()) {
+                if (this.tieneHijoDerecho()){
+                    arbolAux.agregarHijoIzquierdo(this.getHijoDerecho().espejo());
+                }
+                if (this.tieneHijoIzquierdo()){
+                    arbolAux.agregarHijoDerecho(this.getHijoIzquierdo().espejo());
+                }
+            }
+        return arbolAux;
+        }
+    }
 
 
-	public void entreNiveles(int n, int m){
-		
-	}
+    public void entreNiveles(int n, int m){
+
+    }
 
 	
 
