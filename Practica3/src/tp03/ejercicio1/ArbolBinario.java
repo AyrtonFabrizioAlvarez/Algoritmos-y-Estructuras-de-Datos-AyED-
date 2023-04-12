@@ -1,5 +1,5 @@
 package tp03.ejercicio1;
-
+import tp02.ejercicio3.*;
 public class ArbolBinario<T> {
 	private T dato;
 	private ArbolBinario<T> hijoIzquierdo;   
@@ -120,7 +120,26 @@ public class ArbolBinario<T> {
 
 
     public void entreNiveles(int n, int m){
-
+        ArbolBinario<T> arbol = new ArbolBinario();
+        ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica();
+        cola.encolar(this);
+        cola.encolar(null);
+        while(!cola.esVacia()){
+            arbol = cola.desencolar();
+            if (arbol != null){
+                System.out.println(arbol.getDato());
+                if (arbol.tieneHijoIzquierdo()) {
+                    cola.encolar(arbol.getHijoIzquierdo());
+                }
+                if (arbol.tieneHijoDerecho()) {
+                    cola.encolar(arbol.getHijoDerecho());
+                }
+            }
+            else if (!cola.esVacia()){
+                System.out.println("");
+                cola.encolar(null);
+            }
+        }
     }
 
 	
