@@ -4,14 +4,14 @@
  * and open the template in the editor.
  */
 package ej2;
-
-import tp03.ejercicio1.ArbolBinario;
+import tp03.ejercicio1.*;
+import tp02.ejercicio2.*;
 
 /**
  *
- * @author Cocalibur
+ * @author Coco
  */
-public class pruebaEntreNiveles {
+public class pruebaNumerosPares {
 
     /**
      * @param args the command line arguments
@@ -21,9 +21,9 @@ public class pruebaEntreNiveles {
         
 
         ArbolBinario <Integer> HI = new ArbolBinario(20);
-        ArbolBinario <Integer> HD = new ArbolBinario(30);
+        ArbolBinario <Integer> HD = new ArbolBinario(31);
         ArbolBinario <Integer> HI21 = new ArbolBinario(40);
-        ArbolBinario <Integer> HI22 = new ArbolBinario(50);
+        ArbolBinario <Integer> HI22 = new ArbolBinario(51);
         ArbolBinario <Integer> HD21 = new ArbolBinario(60);
         ArbolBinario <Integer> HD22 = new ArbolBinario(75);
         
@@ -35,8 +35,14 @@ public class pruebaEntreNiveles {
         HD.agregarHijoIzquierdo(HI22);
         HD.agregarHijoDerecho(HD22);
         
-        A.entreNiveles(0, 0);
-        System.out.println(A.getAltura());
+        ContarArbol contadorPares = new ContarArbol(A);
+        ListaEnlazadaGenerica<Integer> L = new ListaEnlazadaGenerica();
+        L = contadorPares.numerosPares();
+        
+        L.comenzar();
+        while (!L.fin()) {
+            System.out.println(L.proximo());
+        }
     }
     
 }

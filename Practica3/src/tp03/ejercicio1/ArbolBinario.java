@@ -88,12 +88,12 @@ public class ArbolBinario<T> {
                 return 1;
             }
             else{
-            int aux = 0;
-            if (this.tieneHijoIzquierdo()) {
-                aux += this.getHijoIzquierdo().contarHojas();
-            }
-            if (this.tieneHijoDerecho()) {
-                aux += this.getHijoDerecho().contarHojas();
+                int aux = 0;
+                if (this.tieneHijoIzquierdo()) {
+                    aux += this.getHijoIzquierdo().contarHojas();
+                }
+                if (this.tieneHijoDerecho()) {
+                    aux += this.getHijoDerecho().contarHojas();
             } 
             return aux;
         }
@@ -118,23 +118,25 @@ public class ArbolBinario<T> {
         }
     }
     
-    public int getAltura(ArbolBinario<T> A){
-        if (A.esVacio()) {
-            return 0;
+    public int getAltura(){
+        if (this.esVacio()) {
+            return -1;
         }
         else{
-            if (!A.esHoja()) {
-                if (A.tieneHijoIzquierdo()) {
-                    return  aux + A.getAltura(A.getHijoIzquierdo());
-                }
-                if (A.tieneHijoDerecho()){
-                    return aux + A.getAltura(A.getHijoDerecho());
-                }
-            }
-            else{
+            if (this.esHoja()) {
                 return 0;
             }
-            return 0;
+            else{
+                int izq = 0;
+                int der = 0;
+                if (this.tieneHijoIzquierdo()) {
+                    izq = this.getHijoIzquierdo().getAltura() + 1;
+                }
+                if (this.tieneHijoDerecho()){
+                    der = this.getHijoDerecho().getAltura() + 1;
+                }
+                return Math.max(izq, der);
+            }
         }
     }
 
