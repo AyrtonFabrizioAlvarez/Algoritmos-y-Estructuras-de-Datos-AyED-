@@ -117,6 +117,26 @@ public class ArbolBinario<T> {
         return arbolAux;
         }
     }
+    
+    public int getAltura(ArbolBinario<T> A){
+        if (A.esVacio()) {
+            return 0;
+        }
+        else{
+            if (!A.esHoja()) {
+                if (A.tieneHijoIzquierdo()) {
+                    return  aux + A.getAltura(A.getHijoIzquierdo());
+                }
+                if (A.tieneHijoDerecho()){
+                    return aux + A.getAltura(A.getHijoDerecho());
+                }
+            }
+            else{
+                return 0;
+            }
+            return 0;
+        }
+    }
 
 
     public void entreNiveles(int n, int m){
