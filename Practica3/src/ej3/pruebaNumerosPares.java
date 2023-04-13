@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ej2;
+package ej3;
 import tp03.ejercicio1.*;
 import tp02.ejercicio2.*;
 
@@ -36,8 +36,9 @@ public class pruebaNumerosPares {
         HD.agregarHijoDerecho(HD22);
         
         ContarArbol contadorPares = new ContarArbol(A);
-        ListaEnlazadaGenerica<Integer> L = new ListaEnlazadaGenerica();
+        ListaEnlazadaGenerica<Integer> L;
         L = contadorPares.numerosPares();
+        
         
         L.comenzar();
         while (!L.fin()) {
