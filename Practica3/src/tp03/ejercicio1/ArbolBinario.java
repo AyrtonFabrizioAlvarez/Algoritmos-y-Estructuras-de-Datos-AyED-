@@ -117,6 +117,39 @@ public class ArbolBinario<T> {
         return arbolAux;
         }
     }
+
+    public void entreNiveles(int n, int m){
+        if ( (n >= 0) && (m >= 0) && (n <= m) ) {
+            int nivel = 0;
+            ArbolBinario<T> arbol = null;
+            ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica();
+            cola.encolar(this);
+            cola.encolar(null);
+        
+            while ( (!cola.esVacia()) && (nivel <= m) ){
+                arbol = cola.desencolar();
+                if (arbol != null){
+                    if (nivel >= n) {
+                        System.out.println(arbol.getDato());
+                    }
+                    if (arbol.tieneHijoIzquierdo()) {
+                        cola.encolar(arbol.getHijoIzquierdo());
+                    }
+                    if (arbol.tieneHijoDerecho()) {
+                        cola.encolar(arbol.getHijoDerecho());
+                    }
+                }
+                else if (!cola.esVacia()){
+                    nivel++;
+                    System.out.println("");
+                    cola.encolar(null);
+                }
+            }
+        }
+        else{
+            System.out.println("Los valores ingresados no son validos");
+        }
+    }
     
     public int getAltura(){
         if (this.esVacio()) {
@@ -139,31 +172,6 @@ public class ArbolBinario<T> {
             }
         }
     }
-
-
-    public void entreNiveles(int n, int m){
-        ArbolBinario<T> arbol = new ArbolBinario();
-        ColaGenerica<ArbolBinario<T>> cola = new ColaGenerica();
-        cola.encolar(this);
-        cola.encolar(null);
-        while(!cola.esVacia()){
-            arbol = cola.desencolar();
-            if (arbol != null){
-                System.out.println(arbol.getDato());
-                if (arbol.tieneHijoIzquierdo()) {
-                    cola.encolar(arbol.getHijoIzquierdo());
-                }
-                if (arbol.tieneHijoDerecho()) {
-                    cola.encolar(arbol.getHijoDerecho());
-                }
-            }
-            else if (!cola.esVacia()){
-                System.out.println("");
-                cola.encolar(null);
-            }
-        }
-    }
-
-	
-
+        
+        
 }

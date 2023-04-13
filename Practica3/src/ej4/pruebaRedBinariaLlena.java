@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ej2;
+package ej4;
 
 import tp03.ejercicio1.ArbolBinario;
 
@@ -11,21 +11,22 @@ import tp03.ejercicio1.ArbolBinario;
  *
  * @author Cocalibur
  */
-public class pruebaEntreNiveles {
+public class pruebaRedBinariaLlena {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArbolBinario <Integer> A = new ArbolBinario(10);
+        ArbolBinario <Integer> A = new ArbolBinario(1);
         
 
-        ArbolBinario <Integer> HI = new ArbolBinario(20);
-        ArbolBinario <Integer> HD = new ArbolBinario(30);
-        ArbolBinario <Integer> HI21 = new ArbolBinario(40);
-        ArbolBinario <Integer> HI22 = new ArbolBinario(50);
-        ArbolBinario <Integer> HD21 = new ArbolBinario(60);
-        ArbolBinario <Integer> HD22 = new ArbolBinario(75);
+        ArbolBinario <Integer> HI = new ArbolBinario(2);
+        ArbolBinario <Integer> HD = new ArbolBinario(3);
+        
+        ArbolBinario <Integer> HI21 = new ArbolBinario(4);
+        ArbolBinario <Integer> HD21 = new ArbolBinario(6);
+        ArbolBinario <Integer> HI22 = new ArbolBinario(5);
+        ArbolBinario <Integer> HD22 = new ArbolBinario(7);
         
         A.agregarHijoIzquierdo(HI);
         HI.agregarHijoIzquierdo(HI21);
@@ -35,9 +36,8 @@ public class pruebaEntreNiveles {
         HD.agregarHijoIzquierdo(HI22);
         HD.agregarHijoDerecho(HD22);
         
-        
-        A.entreNiveles(0, 1);
-        //System.out.println(A.getAltura());
+        RedBinariaLlena red = new RedBinariaLlena(A);
+        System.out.println(red.retardoReenvio());
     }
     
 }
