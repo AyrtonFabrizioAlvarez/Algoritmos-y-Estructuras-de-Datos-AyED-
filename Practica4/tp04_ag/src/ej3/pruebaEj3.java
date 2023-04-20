@@ -16,8 +16,8 @@ public class pruebaEj3 {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        ArbolGeneral<Integer> a1 = new ArbolGeneral<Integer>(1);
-        ArbolGeneral<Integer> a2 = new ArbolGeneral<Integer>(5);
+        ArbolGeneral<Integer> a1 = new ArbolGeneral<Integer>(5);
+        ArbolGeneral<Integer> a2 = new ArbolGeneral<Integer>(1);
         ArbolGeneral<Integer> a3 = new ArbolGeneral<Integer>(3);
         ListaGenerica<ArbolGeneral<Integer>> hijos = new ListaEnlazadaGenerica<ArbolGeneral<Integer>>();
         hijos.agregarFinal(a1);
@@ -27,6 +27,12 @@ public class pruebaEj3 {
         
         RecorridosAG recorrido = new RecorridosAG();
         imprimir(recorrido.numerosImparesMayoresQuePreOrden(a, 1));
+        System.out.println("");
+        System.out.println("");
+        imprimir(recorrido.numerosImparesMayoresQueInOrden(a, 1));
+        System.out.println("");
+        System.out.println("");
+        imprimir(recorrido.numerosImparesMayoresQuePostOrden(a, 1));
     }
     
     public static void imprimir(ListaGenerica<Integer> L){
