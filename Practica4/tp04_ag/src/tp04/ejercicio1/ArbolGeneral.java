@@ -150,6 +150,6 @@ public class ArbolGeneral<T> {
 	}
         
         public Boolean esAncestro(T a, T b){
-            
+            return true;
         }
 }

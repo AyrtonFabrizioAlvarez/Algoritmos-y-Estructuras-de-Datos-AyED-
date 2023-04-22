@@ -21,15 +21,15 @@ public class AnalizadorArbol {
     //POR ESO EN ESTE CASO DICE COMO SI QUISIERA DIVIDIR EL TOTAL DEL UTLIMO NIVEL (90) POR UNA CANTIDAD DE HIJOS (0) ERROR
     
     public int devolverMaximoPromedio (ArbolGeneral<AreaEmpresa>arbol){
-        int maxPromedio = -1;
-        int promedio = 0;
-        int total = 0;
-        int totalHijos = 0;
-        
+        int fin = 0;
         if (arbol.esVacio()) {                                                  //SI ES VACIO RETORNO 0
             return 0;
         }
         else{                                                                   //SINO ES VACIO PROCESO
+            int maxPromedio = -1;
+            int promedio = 0;
+            int total = 0;
+            int totalHijos = 0;
             ArbolGeneral<AreaEmpresa> arbolAux = null;
             ColaGenerica<ArbolGeneral<AreaEmpresa>> cola = new ColaGenerica();
             cola.encolar(arbol);
@@ -38,34 +38,36 @@ public class AnalizadorArbol {
             while (!cola.esVacia()){
                 arbolAux = cola.desencolar();
                 if (arbolAux != null) {
+                    fin = 0;
                     total += arbolAux.getDato().getDelay();
+                    totalHijos++;
                     if (arbolAux.tieneHijos()) {
-                        totalHijos++;
                         ListaGenerica<ArbolGeneral<AreaEmpresa>> hijos = arbolAux.getHijos();
                         hijos.comenzar();
                         while (!hijos.fin()) {
                             cola.encolar(hijos.proximo());
                         }
-                        cola.encolar(null);
                     }
                 }
                 else{
-                    System.out.println("total: " + total);
-                    System.out.println("cantHijos: " + totalHijos);
-                    promedio = (int)(total / totalHijos);
-                    System.out.println("promedio: " + promedio);
-                    System.out.println("");
-                    if (promedio > maxPromedio) {
-                        maxPromedio = promedio;
+                    fin++;
+                    if (fin < 2) {                        
+                        System.out.println("total: " + total);
+                        System.out.println("cantHijos: " + totalHijos);
+                        promedio = (int)(total / totalHijos);
+                        System.out.println("promedio: " + promedio);
+                        System.out.println("");
+                        if (promedio > maxPromedio) {
+                            maxPromedio = promedio;
+                        }
+                        total = 0;
+                        totalHijos = 0;
+                        cola.encolar(null);
                     }
-                    total = 0;
-                    totalHijos = 0;
-                    //cola.encolar(null);
                 }
             }
-        }
-        System.out.println("");
         return maxPromedio;
+        }
     }
 }
         
