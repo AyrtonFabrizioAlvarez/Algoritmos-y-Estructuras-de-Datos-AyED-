@@ -26,13 +26,20 @@ public class pruebaEj3 {
         ArbolGeneral<Integer> a = new ArbolGeneral<Integer>(7, hijos);
         
         RecorridosAG recorrido = new RecorridosAG();
+        System.out.println("RECORRIDO PREORDEN");
         imprimir(recorrido.numerosImparesMayoresQuePreOrden(a, 1));
         System.out.println("");
         System.out.println("");
+        System.out.println("RECORRIDO INORDEN");
         imprimir(recorrido.numerosImparesMayoresQueInOrden(a, 1));
         System.out.println("");
         System.out.println("");
+        System.out.println("RECORRIDO POSTORDEN");
         imprimir(recorrido.numerosImparesMayoresQuePostOrden(a, 1));
+        System.out.println("");
+        System.out.println("");
+        System.out.println("RECORRIDO POR NIVELES");
+        imprimir(recorrido.numerosImparesMayoresQuePorNiveles(a, 1));
     }
     
     public static void imprimir(ListaGenerica<Integer> L){

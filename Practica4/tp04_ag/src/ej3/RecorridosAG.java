@@ -5,6 +5,7 @@
  */
 package ej3;
 import tp02.ejercicio2.*;
+import tp02.ejercicio3.*;
 import tp04.ejercicio1.*;
 /**
  *
@@ -87,6 +88,36 @@ public class RecorridosAG {
         if ( (A.getDato() % 2 == 1) && (A.getDato() > n) ) {
                 L.agregarFinal(A.getDato());
             }
+    }
+    
+    public ListaGenerica< Integer > numerosImparesMayoresQuePorNiveles(ArbolGeneral<Integer> a, Integer n){
+        ListaGenerica<Integer> L = new ListaEnlazadaGenerica();
+        if (!a.esVacio()) {
+            numerosImparesPorNivel(L, a, n);
+        }
+        return L;
+    }
+    
+    private void numerosImparesPorNivel(ListaGenerica<Integer> L, ArbolGeneral<Integer> A, Integer n){
+        ArbolGeneral<Integer> arbolAux = null;                          //aux = null
+        ColaGenerica<ArbolGeneral<Integer>> cola = new ColaGenerica();  //instancio la cola
+        if (A.tieneHijos()) {                                           //si el arbol inicial tiene hijos
+            ListaGenerica<ArbolGeneral<Integer>> hijos = A.getHijos();  //instancio y me guardo la lista de hijos
+            hijos.comenzar();
+            cola.encolar(A);
+            cola.encolar(null);
+            while (!cola.esVacia()) {
+                arbolAux = cola.desencolar();
+                if (arbolAux != null) {
+                    if ( (arbolAux.getDato() % 2 == 1) && (arbolAux.getDato() > n) ) {
+                        L.agregarFinal(arbolAux.getDato());
+                    }
+                    while (!hijos.fin()) {
+                        cola.encolar(hijos.proximo());
+                    }
+                }
+            }
+        }
     }
     
 }
