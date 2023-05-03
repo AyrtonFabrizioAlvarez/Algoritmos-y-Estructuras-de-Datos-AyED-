@@ -72,7 +72,8 @@ public class pruebaEj5 {
         
         
         AnalizadorArbol analizador = new AnalizadorArbol();
-        System.out.println(analizador.devolverMaximoPromedio(a));
+        System.out.println("");
+        System.out.println(analizador.devolverMaximoPromedio2(a));
     }
     
 }

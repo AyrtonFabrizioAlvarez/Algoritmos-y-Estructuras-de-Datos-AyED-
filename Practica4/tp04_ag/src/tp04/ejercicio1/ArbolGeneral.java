@@ -110,13 +110,28 @@ public class ArbolGeneral<T> {
                         }
                     }
                 }
-                else {
+                else if (!cola.esVacia()) {
                     nivel++;
                     cola.encolar(null);
                 }
             }
             return nivel;
 	}
+        
+        public Integer nivel2(T dato){
+            int nivel = 0;
+            if(this.getDato() == dato){
+                return 0;
+            }
+            else{
+                ListaGenerica<ArbolGeneral<T>> hijos = this.getHijos();
+                hijos.comenzar();
+                while(!hijos.fin()){
+                    nivel = hijos.proximo().nivel2(dato) + 1;
+                }
+            }
+            return nivel;
+        }
 
 	public Integer ancho() {
             int max = -1;
@@ -134,22 +149,58 @@ public class ArbolGeneral<T> {
                         hijos.comenzar();
                         while (!hijos.fin()) {
                             cola.encolar(hijos.proximo());
-                        }
-                        cola.encolar(null); //NOSE EXACTAMENTE DONDE ENCOLAR EL NULL PARA NO TENER CASOS DE ERROR
-                    }                       //EN ESTE CASO TENIENDO UN NIVEL CONFORMADO POR HIJOS DE 2 NODOS DISTINTOS
-                }                           // EN ESE CASO CONTARIA POR SEPARADO LOS HIJOS DE CADA NODO
-                else{
-                    if (nodos > max) {
-                        max = nodos;   
+                        } 
+                    }                       
+                }                     
+                else {
+                    max = Math.max(max, nodos);
+                    if (!cola.esVacia()){
+                        nodos = 0;
+                        cola.encolar(null);
                     }
-                    //cola.encolar(null);   //ANTES ENCOLABA ACA PERO NO VOLVIA A ENTRAR PARA ACTUALIZAR EL MAXIMO DEL ULTIMO NIVEL
-                    nodos = 0;
                 }
             }
             return max;
 	}
         
         public Boolean esAncestro(T a, T b){
-            return true;
+            ArbolGeneral<T> arbolA = buscarNodo(a);
+            if (arbolA != null) {
+                ArbolGeneral<T> arbolB = arbolA.buscarNodo(b);
+                if (arbolB != null) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        
+        private ArbolGeneral<T> buscarNodo(T a){
+            if (this.esVacio()) {
+                return null;
+            }
+            else{
+                if (!this.esHoja()) {
+                    if (this.getDato() == a) {
+                        return this;
+                    }
+                    if (this.tieneHijos()) {
+                        ListaGenerica<ArbolGeneral<T>> hijos = this.getHijos();
+                        hijos.comenzar();
+                        while (!hijos.fin()) {
+                            ArbolGeneral<T> arbolAux = hijos.proximo().buscarNodo(a);
+                            if (arbolAux != null) {
+                                return arbolAux;
+                            }
+                        }
+                    }
+                }
+                else{
+                    if (this.getDato() == a) {
+                        return this;
+                    }
+                }
+            }
+            return null;
         }
 }

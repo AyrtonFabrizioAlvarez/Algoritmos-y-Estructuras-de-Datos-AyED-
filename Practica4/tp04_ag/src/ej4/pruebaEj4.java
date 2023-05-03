@@ -26,10 +26,13 @@ public class pruebaEj4 {
                 7    
                 |    
                 5 - 1 - 3
-                        |
-                        11 - 12 - 21 - 22
+                |       |
+                44      11 - 12 - 21 - 22
         */
         
+        
+        ArbolGeneral<Integer> a8 = new ArbolGeneral<Integer>(44);
+        ListaGenerica<ArbolGeneral<Integer>> hijos3 = new ListaEnlazadaGenerica<ArbolGeneral<Integer>>();   //HIJOS DE LA RAIZ (5)
         ArbolGeneral<Integer> a4 = new ArbolGeneral<Integer>(11);
         ArbolGeneral<Integer> a5 = new ArbolGeneral<Integer>(12);
         ArbolGeneral<Integer> a6 = new ArbolGeneral<Integer>(21);
@@ -39,7 +42,7 @@ public class pruebaEj4 {
         hijos2.agregarFinal(a5);
         hijos2.agregarFinal(a6);
         hijos2.agregarFinal(a7);
-        ArbolGeneral<Integer> a1 = new ArbolGeneral<Integer>(5);
+        ArbolGeneral<Integer> a1 = new ArbolGeneral<Integer>(5, hijos3);
         ArbolGeneral<Integer> a2 = new ArbolGeneral<Integer>(1);
         ArbolGeneral<Integer> a3 = new ArbolGeneral<Integer>(3, hijos2);
         ListaGenerica<ArbolGeneral<Integer>> hijos = new ListaEnlazadaGenerica<ArbolGeneral<Integer>>();   //HIJOS DE LA RAIZ (7)
@@ -50,7 +53,7 @@ public class pruebaEj4 {
         
         System.out.println("Altura del arbol: " + a.altura());
         System.out.println("");
-        System.out.println("Nivel de profundidad del valor 11: " + a.nivel(11));
+        System.out.println("Nivel de profundidad del valor 11: " + a.nivel2(11));
         System.out.println("");
         System.out.println("Ancho del arbol: " + a.ancho());
     }

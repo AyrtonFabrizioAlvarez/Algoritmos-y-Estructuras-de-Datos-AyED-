@@ -69,34 +69,47 @@ public class AnalizadorArbol {
         return maxPromedio;
         }
     }
-}
-        
-/*
-if (arbol.esVacio()) {
+    
+    
+   public int devolverMaximoPromedio2 (ArbolGeneral<AreaEmpresa>arbol){
+        if (arbol.esVacio()) {                                                  //SI ES VACIO RETORNO 0
             return 0;
         }
-        else{
-            total += arbol.getDato().getDelay();
-            if (arbol.tieneHijos()) {
-                totalHijos = 0;
-                ListaGenerica<ArbolGeneral<AreaEmpresa>> hijos = arbol.getHijos();
-                hijos.comenzar();
-                while(!hijos.fin()){
-                    totalHijos += 1;
-                    devolverMaximoPromedio(hijos.proximo());
-                    //total += arbol.getDato().getDelay();
+        else{                                                                   //SINO ES VACIO PROCESO
+            int promedio = 0;
+            int total = 0;
+            int totalHijos = 0;
+            ArbolGeneral<AreaEmpresa> arbolAux = null;
+            ColaGenerica<ArbolGeneral<AreaEmpresa>> cola = new ColaGenerica();
+            cola.encolar(arbol);
+            cola.encolar(null);
+            
+            while (!cola.esVacia()){
+                arbolAux = cola.desencolar();
+                if (arbolAux != null) {
+                    totalHijos++;
+                    total += arbolAux.getDato().getDelay();
+                    if (arbolAux.tieneHijos()) {
+                        ListaGenerica<ArbolGeneral<AreaEmpresa>> hijos = arbolAux.getHijos();
+                        hijos.comenzar();
+                        while (!hijos.fin()) {
+                            cola.encolar(hijos.proximo());
+                        }
+                    }
                 }
-                promedio = (int)(total / totalHijos);
-                if (promedio > maxPromedio) {
-                    maxPromedio = promedio;
+                else {                      
+                    promedio = Math.max(promedio, (total/totalHijos));
+                    if(!cola.esVacia()){
+                        total = 0;
+                        totalHijos = 0;
+                        cola.encolar(null);
+                    }
                 }
-                System.out.println(promedio);
             }
-            else{
-                total = 0;
-                totalHijos = 0;
-            }
+        return promedio;
         }
-        return maxPromedio;
-    }
-*/
+    } 
+    
+    
+   
+}
